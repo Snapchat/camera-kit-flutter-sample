@@ -31,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   static const platform = MethodChannel('com.camerakit.flutter.sample.simple');
   Uint8List _imagePath = Uint8List.fromList([]);
+  bool _isImageAvailable = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.memory(_imagePath),
+            _isImageAvailable
+                ? Image.memory(_imagePath)
+                : Image.network('https://picsum.photos/200/300'),
           ],
         ),
       ),
@@ -57,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final Uint8List? result =
         await platform.invokeMethod('openCameraKitLenses');
     setState(() {
+      _isImageAvailable = true;
       _imagePath = result!;
     });
   }
