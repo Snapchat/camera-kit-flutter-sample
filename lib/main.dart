@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:video_player/video_player.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,23 +33,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static const platform = MethodChannel('com.camerakit.flutter.sample.simple');
-  Uint8List _imagePath = Uint8List.fromList([]);
-  bool _isImageAvailable = false;
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+  final List<Widget> _children = [
+    Image.network('https://picsum.photos/200/300'),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _isImageAvailable
-                ? Image.memory(_imagePath)
-                : Image.network('https://picsum.photos/200/300'),
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: _children,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -58,11 +59,59 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _openCameraKitLenses() async {
-    final Uint8List? result =
-        await platform.invokeMethod('openCameraKitLenses');
+    final result = await platform.invokeMethod('openCameraKitLenses');
+    final String path = result['path'] as String;
+    final String mimeType = result['mime_type'] as String;
     setState(() {
-      _isImageAvailable = true;
-      _imagePath = result!;
+      _children.clear();
+      if (mimeType == 'video') {
+        _controller = VideoPlayerController.file(
+          File(path),
+        );
+        initializeVideoPlayer();
+        _children.add(
+          Expanded(
+            child: FutureBuilder(
+              future: _initializeVideoPlayerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: VideoPlayer(_controller),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+          ),
+        );
+      } else if (mimeType == 'image') {
+        _children.add(
+          Image.file(
+            File(path),
+          ),
+        );
+      }
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void initializeVideoPlayer() {
+    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller.setLooping(true);
+    _controller.play();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }

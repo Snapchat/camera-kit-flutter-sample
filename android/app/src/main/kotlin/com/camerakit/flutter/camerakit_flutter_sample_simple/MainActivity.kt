@@ -17,7 +17,7 @@ class MainActivity : FlutterFragmentActivity() {
     private val CAMERAKIT_APP_ID = "" //TODO fill app id here
     private val CAMERAKIT_GROUP_ID = "" //TODO fill group id here
     private val CAMERAKIT_API_TOKEN = "" //TODO fill api token here
-    private val CHANNEL = "com.camerakit.flutter.sample.simple";
+    private val CHANNEL = "com.camerakit.flutter.sample.simple"
 
     private lateinit var _result: MethodChannel.Result
     private lateinit var _methodChannel: MethodChannel
@@ -26,16 +26,20 @@ class MainActivity : FlutterFragmentActivity() {
         (this as FlutterFragmentActivity).registerForActivityResult(CameraActivity.Capture) { captureResult ->
             when (captureResult) {
                 is CameraActivity.Capture.Result.Success.Video -> {
-                    _result.notImplemented()
+                    _result.success(hashMapOf("path" to captureResult.uri.toFile().absolutePath.toString(),
+                        "mime_type" to "video"))
                 }
                 is CameraActivity.Capture.Result.Success.Image -> {
-                    _result.success(captureResult.uri.toFile().readBytes())
+                    _result.success(hashMapOf("path" to captureResult.uri.toFile().absolutePath.toString(),
+                        "mime_type" to "image"))
                 }
                 is CameraActivity.Capture.Result.Cancelled -> {
                     Toast.makeText(this@MainActivity, "Action cancelled", Toast.LENGTH_SHORT).show()
+                    _result.error("Cancelled", "Action Cancelled", null)
                 }
                 is CameraActivity.Capture.Result.Failure -> {
                     Toast.makeText(this@MainActivity, "Action failed", Toast.LENGTH_SHORT).show()
+                    _result.error("Failure", "Action failed", null)
                 }
             }
         }
