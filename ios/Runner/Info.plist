@@ -48,7 +48,7 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera is used to apply AR effects</string>
+	<string>CameraKit sample uses camera for applying AR effects</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>CameraKit Sample app uses the microphone to process and record audio</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
