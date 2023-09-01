@@ -28,6 +28,7 @@ You have now installed the app on your machine
 2. Navigate to Configuration.swift and enter your app's Camera Kit credentials
 3. Navigate to the Runner project and open the Signing & Capabilities Tab. Fill out the Signing section with your Apple Developer credentials 
 5. Plug in an iOS device and run the target `Runner`
+6. Add you credentials to `Configuration.swift`
 
 The app should now be running on your device.     
 
