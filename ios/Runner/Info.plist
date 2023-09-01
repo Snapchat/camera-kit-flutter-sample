@@ -55,7 +55,5 @@
 	<string>CameraKit Sample uses photo library to save captured photos and recorded videos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>CameraKit Sample uses photo library to save captured photos and recorded videos</string>
-	<key>SCCameraKitAPIToken</key>
-	<string>&lt;ENTER YOUR API TOKEN FROM CAMERA KIT PORTAL &gt;</string>
 </dict>
 </plist>
