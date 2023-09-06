@@ -4,8 +4,6 @@ Sample app showcasing how to integrate Camera Kit in a Flutter app. It is using 
 
 Once user takes a photo or a video, final result is shown back in Flutter layer.
 
-**What's supported:** This currently only works Android. WIP for iOS.
-
 **How it works**: On Android, when the floating action button is clicked it calls `invokeMethod` on Flutter stack which takes the control to Android implementation on Kotlin to open Camera Kit's `CameraActivity`. When the user takes a picture a video, file path from the cache is then passed back to Fluter layer using `MethodChannel.Result`. Flutter layer then use this file path result to show captured photo or video in Flutter UI using `Image` or `VideoPlayerController` plugins.
 
 On iOS the app works in a similar fashion. After the floating action button calls `invokeMethod` on Flutter, the app opens FlutterCameraViewController. Once the user takes a picture or video, its file path on device is passed back and in Flutter's' UI using `Image` or `VideoPlayerController` plugins.   
