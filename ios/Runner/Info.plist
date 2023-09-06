@@ -47,5 +47,13 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>CameraKit sample uses camera for applying AR effects</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>CameraKit Sample app uses the microphone to process and record audio</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>CameraKit Sample uses photo library to save captured photos and recorded videos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>CameraKit Sample uses photo library to save captured photos and recorded videos</string>
 </dict>
 </plist>
