@@ -12,7 +12,7 @@ On iOS the app works in a similar fashion. After the floating action button call
 https://youtube.com/shorts/YyQwRUQA71I?feature=share
 
 ## Building and running the app
-These instruction assume your Flutter installed on your machine. If you do not or encounter any issues with Flutter, see the installation instructions
+These instruction assume your Flutter installed on your machine. If you do not have Flutter or encounter any issues with it, see the installation [instructions](https://docs.flutter.dev/get-started/install).
 
 1. Clone or download the project folder
 2. In the terminal, change your directory to where you cloned or unzipped the project folder
