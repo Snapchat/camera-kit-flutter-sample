@@ -24,10 +24,11 @@ You have now installed the app on your machine
 
 ### iOS Configuration
 
-1. Once, the project is compiled, navigate to the `iOS` folder and open `Running.xcworkspace` using Xcode. You should two projects: Runner and Pods
+
+1. Once `flutter run` is finished, navigate to the `iOS` folder and open `Running.xcworkspace` using Xcode. You should see two projects: Runner and Pods
 2. Navigate to Configuration.swift and enter your app's Camera Kit credentials
 3. Navigate to the Runner project and open the Signing & Capabilities Tab. Fill out the Signing section with your Apple Developer credentials 
-5. Plug in an iOS device and run the target `Runner`
+4. Plug in an iOS device and run the target `Runner`
 
 The app should now be running on your device.     
 
