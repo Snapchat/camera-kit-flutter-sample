@@ -16,6 +16,9 @@ allprojects {
         google()
         mavenCentral()
     }
+    ext {
+        cameraKitVersion = rootProject.file('../VERSION').text.trim()
+    }
 }
 
 rootProject.buildDir = '../build'
