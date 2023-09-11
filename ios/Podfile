@@ -33,8 +33,8 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
   
-  pod 'SCSDKCameraKit', '1.20.0'
-  pod 'SCSDKCameraKitReferenceUI', '1.20.0'
+  pod 'SCSDKCameraKit', '1.26.0'
+  pod 'SCSDKCameraKitReferenceUI', '1.26.0'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
