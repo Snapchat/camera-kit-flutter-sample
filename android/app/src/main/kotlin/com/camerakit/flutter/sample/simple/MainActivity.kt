@@ -1,4 +1,4 @@
-package com.camerakit.flutter.camerakit_flutter_sample_simple
+package com.camerakit.flutter.sample.simple
 
 import android.content.Intent
 import android.view.View
@@ -14,9 +14,8 @@ import java.io.File
 
 class MainActivity : FlutterFragmentActivity() {
 
-    private val CAMERAKIT_APP_ID = "" //TODO fill app id here
-    private val CAMERAKIT_GROUP_ID = "" //TODO fill group id here
-    private val CAMERAKIT_API_TOKEN = "" //TODO fill api token here
+    private val CAMERAKIT_GROUP_ID = "59f98a84-6910-45c0-8692-4edd5cc3d5ed" //TODO fill group id here
+    private val CAMERAKIT_API_TOKEN = "eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNjU1MzM1NzM0LCJzdWIiOiIxOTFkNWRmMC1kNWJmLTQ2OGItYTYzNC04NDhlZmRmYWY1OGF-U1RBR0lOR35kMWRmOTE0Yy04ZGI0LTQzZDktYjhmNi1mZDdjOTM2ODQ4NmEifQ.XsUvnwigfWjEFpd6-BqbpabjDCMLK80SvKIrag_iSD4" //TODO fill api token here
     private val CHANNEL = "com.camerakit.flutter.sample.simple"
 
     private lateinit var _result: MethodChannel.Result
@@ -54,7 +53,6 @@ class MainActivity : FlutterFragmentActivity() {
                 captureLauncher.launch(
                     CameraActivity.Configuration.WithLenses(
                         cameraKitApiToken = CAMERAKIT_API_TOKEN,
-                        cameraKitApplicationId = CAMERAKIT_APP_ID,
                         lensGroupIds = arrayOf(CAMERAKIT_GROUP_ID)
                     )
                 )
