@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
   final List<Widget> _children = [
-    Image.network('https://picsum.photos/200/300'),
+    Text("Click on shutter icon to launch Camera Kit"),
   ];
 
   @override
