@@ -27,14 +27,20 @@ end
 
 require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
 
-flutter_ios_podfile_setup
+sdk_path = File.expand_path("..", Dir.pwd)
+sdk_version_file_path = File.join(sdk_path, 'VERSION')
+sdk_version = File.read(sdk_version_file_path).strip
+
+if sdk_version.empty?
+  raise "SDK version must be specified in VERSION file"
+end
 
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
   
-  pod 'SCSDKCameraKit', '1.26.0'
-  pod 'SCSDKCameraKitReferenceUI', '1.26.0'
+  pod 'SCSDKCameraKit', sdk_version
+  pod 'SCSDKCameraKitReferenceUI', sdk_version
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
