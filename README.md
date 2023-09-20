@@ -30,3 +30,7 @@ You have now installed the app on your machine
 
 The app should now be running on your device.     
 
+
+---
+We don’t plan to regularly update this code, but rather we provide it as sample code that you can adapt to your needs. Thus, we will allow forks to this repo which can be up/downvoted, but we will not be accepting PRs. If you have questions, please use the [Community Forum](https://community.snap.com/snapar/categories/camera-kit).
+
