@@ -1,6 +1,9 @@
 
 # Camera Kit sample app using Flutter wrapper
-Sample app showcasing how to integrate Camera Kit in a Flutter app. It is using Flutter's wrapper `MethodChannel` to invoke Camera Kit APIs in native android/ios. All the Live Camera view and Lenses are currently implemented in native Android using Camera Kit's `CameraActivity` class. For iOS they are implemented using FlutterCameraViewController. This is a custom viewcontroller similar to CameraViewController in Snap's ReferenceUI. 
+> [!IMPORTANT] 
+> This repository contains example projects to help you get started with Camera Kit integrations. The software is provided "as is" without any warranties or guarantees, and it is not officially supported for production use.
+
+The sample apps in this repository show how to integrate Camera Kit in a Flutter app. They use Flutter's wrapper `MethodChannel` to invoke Camera Kit APIs in native android/ios. All the Live Camera view and Lenses are currently implemented in native Android using Camera Kit's `CameraActivity` class. For iOS, they are implemented using `FlutterCameraViewController`, a custom viewcontroller similar to CameraViewController in the ReferenceUI module in Snap's Camera Kit SDK. 
 
 Once user takes a photo or a video, final result is shown back in Flutter layer.
 
